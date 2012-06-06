@@ -1,4 +1,4 @@
-SOURCES=main.c
+SOURCES=../robot4/main.c 
 local:
 	gcc -std=gnu99 -Wall $(SOURCES) -lm -o app.exe
 clean:
