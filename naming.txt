@@ -1,1 +1,9 @@
 Naming and style convention
+
+Functions:      myFuction
+Variables:      my_variable
+Constants:      MY_CONSTANT
+
+Struct typedef: MyStruct
+Struct name:    structName
+Struct member:  structMember
