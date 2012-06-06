@@ -1,5 +1,6 @@
 Naming and style convention
 
+<<<<<<< HEAD
 Functions:      myFuction
 Variables:      my_variable
 Constants:      MY_CONSTANT
@@ -7,3 +8,6 @@ Constants:      MY_CONSTANT
 Struct typedef: MyStruct
 Struct name:    structName
 Struct member:  structMember
+=======
+Your mother sucks cocks in hell
+>>>>>>> f258e5824d6596d6eb7128d898257f50f8c89922
