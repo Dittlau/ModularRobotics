@@ -1,3 +1,17 @@
 Naming and style convention
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+Functions:      myFuction
+Variables:      my_variable
+Constants:      MY_CONSTANT
+
+Struct typedef: MyStruct
+Struct name:    structName
+Struct member:  structMember
+=======
+Your mother sucks cocks in hell
+>>>>>>> f258e5824d6596d6eb7128d898257f50f8c89922
+=======
 min version
+>>>>>>> 8904895ab0682a24119584df6635bfea3b13e7c2
