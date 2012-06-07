@@ -11,5 +11,8 @@
 
 #endif /* ADC_H_ */
 
-void ADCInit(int port_no);
-int ADCConvert(void);
+void ADCInit(void);
+int getSensorValue(int port_no);
+int IRDistance(int sensor_value);
+int DMSDistance(int sensor_value);
+int touch(int sensor_value);

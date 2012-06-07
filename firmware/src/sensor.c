@@ -8,6 +8,7 @@
 /**
  * Converts the value from an IR sensor to cm
  * @param sensor_value The value returned from the sensor
+ * @param name description
  * @return The distance in cm
  */
 int getIRDistance(int sensor_value){
