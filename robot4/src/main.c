@@ -5,8 +5,11 @@
 #include "serial.h"
 
 int main(){
-	serial_initialize();
-	printf("TESTING");
+	int val;
+	serial_initialize(57600);
+	//ADCInit(1);
+	val = 10;//ADCConvert();
+	printf("%d\n\n",val);
 	return 0;
 }
 

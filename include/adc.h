@@ -10,3 +10,6 @@
 
 
 #endif /* ADC_H_ */
+
+void ADCInit(int port_no);
+int ADCConvert(void);
