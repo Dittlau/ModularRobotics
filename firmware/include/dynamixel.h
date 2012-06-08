@@ -15,6 +15,8 @@ void dxl_terminate();
 #define MAXNUM_TXPARAM		(150)
 #define MAXNUM_RXPARAM		(60)
 
+//#define DEFAULT_BAUDNUMBER	(1)
+
 void dxl_set_txpacket_id(int id);
 #define BROADCAST_ID		(254)
 
