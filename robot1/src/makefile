@@ -1,4 +1,4 @@
-SOURCES=main.c ../src/serial.c
+SOURCES=main.c ../../firmware/src/serial.c ../../firmware/src/adc.c ../../firmware/src/dxl_hal.c ../../firmware/src/dynamixel.c ../../firmware/src/wheel.c
 local:
 	gcc -std=gnu99 -Wall -I../include -I../../firmware/include $(SOURCES) -lm -o app.exe
 clean:

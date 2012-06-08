@@ -43,5 +43,7 @@ int convertSpeed(int speed_percentage){
 	int speed;
 	if(speed_percentage >= 0 && speed_percentage <= 100) speed = (int)(10.23*speed_percentage);
 	else if(speed_percentage < 0 && speed_percentage >= -100) speed = (int)(-10.23*speed_percentage)+1024;
+	else if(speed_percentage > 100) speed = 100;
+	else if(speed_percentage < -100) speed = -100;
 	return speed;
 }

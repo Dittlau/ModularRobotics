@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <avr/io.h>
 #include <util/delay.h>
@@ -61,8 +62,9 @@ int getSensorValue(int port_no){
  */
 int IRDistance(int sensor_value){
 	int dist;
-	if(sensor_value > 80) dist = (int)(-0.0224*sensor_value + 9.4898);
-	else dist = (int)(-0.172*sensor_value + 18.804);
+	if(sensor_value > 150) dist = (int)(-0.0174*sensor_value + 7);
+	if(sensor_value > 40) dist = (int)(-0.04*sensor_value + 10);
+	else dist = (int)(-0.1905*sensor_value + 15);
 	return dist;
 }
 
