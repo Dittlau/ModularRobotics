@@ -5,10 +5,13 @@
  *  Author: Daniel
  */ 
 
-#include "init.h"
+#include <stdio.h>
 #include <avr/interrupt.h>
+#include "init.h"
 #include "serial.h"
 #include "dynamixel.h"
+#include "adc.h"
+//#include "wheel.h"
 
 
 int main(){
@@ -18,11 +21,13 @@ int main(){
 	adcInit();
 	sei(); //Enables global interrupts
 
+	unsigned int distanceLeft, distanceRight, speedLeft, speedRight;
+	unsigned char speedcalibration;
 	while(1) {
 	
 	// Get sensor reading (in cm)
-	distanceLeft IRdistance(getSensorValue(1));
-	distanceRight IRdistance(getSensorValue(4));
+	distanceLeft = IRDistance(getSensorValue(1));
+	distanceRight = IRDistance(getSensorValue(4));
 	
 	// Calculating the required speed
 	speedcalibration = 5;
