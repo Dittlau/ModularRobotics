@@ -11,7 +11,7 @@
 #include "serial.h"
 #include "dynamixel.h"
 #include "adc.h"
-//#include "wheel.h"
+#include "wheel.h"
 
 
 int main(){
