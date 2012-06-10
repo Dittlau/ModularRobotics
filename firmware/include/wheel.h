@@ -3,9 +3,6 @@
 #define WHEEL_H_
 
 
-#endif /* WHEEL_H_ */
-
-
 /// Control table address
 #define P_CCW_ANGLE_L			8
 #define P_CCW_ANGLE_H			9
@@ -21,3 +18,5 @@
 void wheelInit(void);
 void wheel(int id, int speed);
 int convertSpeed(int speed_percentage);
+
+#endif /* WHEEL_H_ */

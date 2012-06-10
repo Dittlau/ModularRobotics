@@ -14,7 +14,7 @@ int dxl_hal_tx( unsigned char *pPacket, int numPacket );
 int dxl_hal_rx( unsigned char *pPacket, int numPacket );
 void dxl_hal_set_timeout( int NumRcvByte );
 int dxl_hal_timeout(void);
-
+void delay_us(unsigned int count);
 
 
 #ifdef __cplusplus

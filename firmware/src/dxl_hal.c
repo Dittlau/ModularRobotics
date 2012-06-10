@@ -149,7 +149,7 @@ int dxl_hal_timeout(void)
 		return 1;
 	}
 	
-	_delay_us(gfByteTransTime_us);
+	delay_us(gfByteTransTime_us);
 	return 0;
 }
 
@@ -200,4 +200,12 @@ unsigned char dxl_hal_get_queue(void)
 SIGNAL(USART0_RX_vect)
 {
 	dxl_hal_put_queue( UDR0 );
+}
+
+// Added code to solve delay function issues
+void delay_us(uint16_t count) {
+	while(count--) {
+		_delay_us(1);
+
+	}
 }

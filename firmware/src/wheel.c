@@ -32,7 +32,6 @@ void wheel(int id, int speed){
 
 		//}
 	//}
-
 }
 
 /**
@@ -40,7 +39,7 @@ void wheel(int id, int speed){
  * @param speedpercentage The speed given in percentage from 10-100. Positive percentage will move the motor CCW and negative will move the motor CW.
  */
 int convertSpeed(int speed_percentage){
-	int speed;
+	int speed=0;
 	if(speed_percentage >= 0 && speed_percentage <= 100) speed = (int)(10.23*speed_percentage);
 	else if(speed_percentage < 0 && speed_percentage >= -100) speed = (int)(-10.23*speed_percentage)+1024;
 	else if(speed_percentage > 100) speed = 100;
