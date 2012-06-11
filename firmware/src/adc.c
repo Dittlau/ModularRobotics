@@ -69,7 +69,7 @@ int IRDistance(int sensor_value){
 }
 
 int IRValue(int sensor_value){
-	if(sensor_value > 100) return 2;
+	if(sensor_value > 25) return 2; // limit was 100 before
 	else if(sensor_value > 0) return 1;
 	else return 0;
 }
@@ -81,10 +81,9 @@ int IRValue(int sensor_value){
  */
 int DMSDistance(int sensor_value){
 	int dist;
-	if(sensor_value > 200) dist = (int)(-0.0526*sensor_value + 35);
-	else if(sensor_value > 100) dist = (int)(-0.2857*sensor_value + 77);
+	if(sensor_value > 200) dist = (int)(-0.0345*sensor_value + 30);
+	else if(sensor_value > 120) dist = (int)(-0.25*sensor_value + 72);
 	else dist = 50;//(int)(-0.7347*sensor_value + 130.2);
-
 
 	return dist;
 }
