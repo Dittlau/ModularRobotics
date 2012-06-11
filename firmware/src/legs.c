@@ -1,3 +1,4 @@
+#include <avr/interrupt.h>
 #include "serial.h"
 #include "dxl_hal.h"
 #include "dynamixel.h"
@@ -16,7 +17,7 @@ void legsInit(void){
  * @param direction Direction of movement, either forward or back.
  * @param distance The distance moved.
  */
-void move(int direction, int distance){
+void move(char direction, int distance){
 	
 	
 }
@@ -26,7 +27,7 @@ void move(int direction, int distance){
  * @param direction Direction of turn, either left or right.
  * @param times The number of 45 degree turns made.
  */
-void turn(int direction, int times){
+void turn(char direction, int times){
 	
 	
 }

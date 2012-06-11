@@ -11,11 +11,15 @@
 #define P_PRESENT_POSITION_H	37
 #define P_MOVING				46
 
+// Defining various variables
+char FORWARD, BACK, LEFT, RIGHT;
+
+
 // Default setting
 #define DEFAULT_BAUDNUM		1 // 1Mbps
 
 void legsInit(void);
-void move(int distance);
-void turn(int direction, int times);
+void move(char direction, int distance);
+void turn(char direction, int times);
 
 #endif /* LEGS_H_ */
