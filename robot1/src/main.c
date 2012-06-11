@@ -33,8 +33,8 @@ int main(){
 		distanceRight = IRValue(getSensorValue(4));
 
 		// Calculating the required speed
-		speedRight = (int)((front-26*distanceLeft)*5/3);
-		speedLeft = (int)((front-26*distanceRight)*5/3);
+		speedRight = (int)((front-40*distanceLeft));
+		speedLeft = (int)((front-40*distanceRight));
 
 		movingLeft = dxl_read_byte( 1, 38 );
 		movingRight = dxl_read_byte(2,38);
