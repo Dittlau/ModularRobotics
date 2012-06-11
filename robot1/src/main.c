@@ -24,24 +24,24 @@ int main(){
 	unsigned int distanceLeft, distanceRight, speedLeft, speedRight, front;
 	unsigned char speedcalibration;
 	while(1) {
-		//printf("%d   %d   %d   %d   %d\n\n",getSensorValue(3),getSensorValue(4),getSensorValue(5),getSensorValue(2),getSensorValue(6));
-		//_delay_ms(1000);
+		printf("%d\n\n",getSensorValue(1));
+		_delay_ms(1000);
 
 		// Get sensor reading (in cm)
-		front = DMSDistance(getSensorValue(1));
-		distanceLeft = IRDistance(getSensorValue(3));
-		distanceRight = IRDistance(getSensorValue(5));
+		/*front = DMSDistance(getSensorValue(1));
+		distanceLeft = IRValue(getSensorValue(3));
+		distanceRight = IRValue(getSensorValue(4));
 
 		// Calculating the required speed
 		speedcalibration = 5;
-		speedRight = (int)(front+2*(distanceLeft-distanceRight));
-		speedLeft = (int)(front+2*(distanceRight-distanceLeft));
+		speedRight = (int)(front-20*distanceLeft);
+		speedLeft = (int)(front-20*distanceRight);
 
 		printf("%d   %d\n\n",speedLeft,speedRight);
 	
-		// Making the wheels spin (in cm/s)
+		// Making the wheels spin
 		wheel(1,-speedRight);
-		wheel(2,speedLeft);
+		wheel(2,speedLeft);*/
 
 	}
 

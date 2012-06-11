@@ -68,6 +68,12 @@ int IRDistance(int sensor_value){
 	return dist;
 }
 
+int IRValue(int sensor_value){
+	if(sensor_value > 100) return 2;
+	else if(sensor_value > 0) return 1;
+	else return 0;
+}
+
 /**
  * Converts the value from the DMS-sensor to a distance given in cm
  * @param sensor_value The value from the DMS-sensor
@@ -75,13 +81,19 @@ int IRDistance(int sensor_value){
  */
 int DMSDistance(int sensor_value){
 	int dist;
-	if(sensor_value > 200) dist = (int)(-0.0526*sensor_value + 32.895);
-	else if(sensor_value > 100) dist = (int)(-0.2857*sensor_value + 77.143);
-	else dist = (int)(-0.7347*sensor_value + 130.2);
+	if(sensor_value > 200) dist = (int)(-0.0526*sensor_value + 35);
+	else if(sensor_value > 100) dist = (int)(-0.2857*sensor_value + 77);
+	else dist = 50;//(int)(-0.7347*sensor_value + 130.2);
+
 
 	return dist;
 }
 
+int DMSValue(int sensor_value){
+	if(sensor_value > 200) return 0;
+	else if(sensor_value > 120) return 1;
+	else return 2;
+}
 /**
  * Determines if the touch-sensor is on or off
  * @param sensor_value The value from the touch-sensor
