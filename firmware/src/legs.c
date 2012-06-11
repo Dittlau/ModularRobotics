@@ -9,6 +9,13 @@
  */
 void legsInit(void){
 	dxl_initialize( 0, DEFAULT_BAUDNUM ); // Not using device index
+	
+	// Define maximum angles for joints
+	
+	
+	dxl_write_word(3, P_CCW_ANGLE_L, 0 );
+	dxl_write_word(3, P_CCW_ANGLE_H, 0 );
+	
 	sei();	// Interrupt Enable
 }
 
@@ -18,6 +25,12 @@ void legsInit(void){
  * @param distance The distance moved.
  */
 void move(char direction, int distance){
+	if (direction==FORWARD){
+		
+	}
+	else if (direction==BACK){
+		
+	}
 	
 	
 }
