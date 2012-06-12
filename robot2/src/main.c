@@ -1,17 +1,17 @@
-#include <stdio.h>
+/*
+ * robot2.c
+ *
+ * Created: 12-06-2012 14:50:35
+ *  Author: cello
+ */ 
+
+
 #include <avr/io.h>
-#include <util/delay.h>
-#include <avr/interrupt.h>
-#include "serial.h"
 
-int main(){
-	int val;
-	serial_initialize(57600);
-	//ADCInit(1);
-	val = 10;//ADCConvert();
-	printf("%d\n\n",val);
-	return 0;
+int main(void)
+{
+    while(1)
+    {
+        //TODO:: Please write your application code 
+    }
 }
-
-
-
