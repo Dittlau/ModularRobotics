@@ -21,18 +21,14 @@ void serial_set_wire();
 ///
 
 void serial_set_zigbee() {
-
-  //Output on the 3 pins -MAY NOT BE NESSESARY
-  //DDRD &= ~(LINK_PLUGIN | ENABLE_RXD_LINK_PC | ENABLE_RXD_LINK_ZIGBEE);
+  DDRD &= ~(LINK_PLUGIN | ENABLE_RXD_LINK_PC | ENABLE_RXD_LINK_ZIGBEE); //Output on the 3 pins -MAY NOT BE NESSESARY
 
   PORTD &= ~(LINK_PLUGIN | ENABLE_RXD_LINK_PC); //Deactivate LINK_PLUGIN and ENABLE_RXD_LINK_PC   // no pull up
   PORTD |= ENABLE_RXD_LINK_ZIGBEE; //Activate ENABLE_RXD_LINK_ZIGBEE
-
 }
 
 void serial_set_wire() {
-  //-MAY NOT BE NESSESARY
-  //DDRD &= ~(LINK_PLUGIN | ENABLE_RXD_LINK_PC | ENABLE_RXD_LINK_ZIGBEE);
+  DDRD &= ~(LINK_PLUGIN | ENABLE_RXD_LINK_PC | ENABLE_RXD_LINK_ZIGBEE); //-MAY NOT BE NESSESARY
   
   PORTD &= ~(ENABLE_RXD_LINK_ZIGBEE); //Deactivate ENABLE_RXD_LINK_ZIGBEE
   PORTD |= LINK_PLUGIN | ENABLE_RXD_LINK_PC; //Activate ENABLE_RXD_LINK_PC
@@ -41,14 +37,16 @@ void serial_set_wire() {
 
 int main(void)
 {
-	serial_set_zigbee();
-	serial_set_wire();
 	
+	serial_initialize(57600);
 	sei();
+	serial_set_zigbee();
+	
+	
 	
 	while(1)
 	{
-		//	printf("hello");
+			printf("hello");
 	}
 
 	return 0;
