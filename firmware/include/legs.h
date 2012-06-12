@@ -3,13 +3,27 @@
 
 
 /// Control table address
-#define P_CCW_ANGLE_L			8
-#define P_CCW_ANGLE_H			9
-#define P_SPEED_L				32
-#define P_SPEED_H				33
-#define P_PRESENT_POSITION_L	36
-#define P_PRESENT_POSITION_H	37
-#define P_MOVING				46
+//#define CCW_ANGLE_L		8
+//#define CCW_ANGLE_H		9
+#define GOAL_POSITION_L		30
+#define GOAL_POSITION_H		31
+#define MOVING_SPEED_L		32
+#define MOVING_SPEED_H		33
+#define PRESENT_POSITION_L	36
+#define PRESENT_POSITION_H	37
+#define PRESENT_SPEED_L		38
+#define PRESENT_SPEED_H		39
+#define MOVING				46
+
+
+// Defining the joints
+#define RIGHT_HIP	8
+#define RIGHT_KNEE	7
+#define RIGHT_ANKLE	6
+#define LEFT_HIP	5
+#define LEFT_KNEE	4
+#define LEFT_ANKLE	3
+
 
 // Defining various variables
 char FORWARD, BACK, LEFT, RIGHT;
@@ -19,7 +33,7 @@ char FORWARD, BACK, LEFT, RIGHT;
 #define DEFAULT_BAUDNUM		1 // 1Mbps
 
 void legsInit(void);
-void move(char direction, int distance);
-void turn(char direction, int times);
+void move(char direction, char speed);
+void turn(char direction, char times);
 
 #endif /* LEGS_H_ */

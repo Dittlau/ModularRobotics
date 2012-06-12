@@ -21,27 +21,38 @@ int main(){
 	ADCInit();
 	sei(); //Enables global interrupts
 
-	unsigned int distanceLeft, distanceRight, speedLeft, speedRight, front;
-	unsigned char speedcalibration;
+	unsigned int distanceLeft, distanceRight, front, movingLeft, movingRight;
+	signed int speedLeft, speedRight;
 	while(1) {
-		//printf("%d   %d   %d   %d   %d\n\n",getSensorValue(3),getSensorValue(4),getSensorValue(5),getSensorValue(2),getSensorValue(6));
+		//printf("%d   %d\n\n",getSensorValue(3),getSensorValue(4));
 		//_delay_ms(1000);
 
 		// Get sensor reading (in cm)
 		front = DMSDistance(getSensorValue(1));
-		distanceLeft = IRDistance(getSensorValue(3));
-		distanceRight = IRDistance(getSensorValue(5));
+		distanceLeft = IRValue(getSensorValue(3));
+		distanceRight = IRValue(getSensorValue(4));
 
 		// Calculating the required speed
-		speedcalibration = 5;
-		speedRight = (int)(front+2*(distanceLeft-distanceRight));
-		speedLeft = (int)(front+2*(distanceRight-distanceLeft));
+		speedRight = (int)((front-40*distanceLeft));
+		speedLeft = (int)((front-40*distanceRight));
 
-		printf("%d   %d\n\n",speedLeft,speedRight);
-	
-		// Making the wheels spin (in cm/s)
-		wheel(1,-speedRight);
-		wheel(2,speedLeft);
+		movingLeft = dxl_read_byte( 1, 38 );
+		movingRight = dxl_read_byte(2,38);
+
+		if(movingLeft < 15 && movingRight < 15){
+			wheel(1,0);
+			wheel(2,-20);
+			_delay_ms(1000);
+		}else{
+			wheel(1,-speedRight);
+			wheel(2,speedLeft);
+		}
+
+
+		printf("%d   %d  -  %d\n\n",speedLeft,speedRight,getSensorValue(1));
+		//_delay_ms(1000);
+		// Making the wheels spin
+
 
 	}
 
