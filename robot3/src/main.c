@@ -15,9 +15,8 @@ int main(void)
 {
 	
 	serial_initialize(57600);
+	set_zigbee();
 	sei();
-	serial_set_zigbee();
-	
 	
 	
 	while(1)
