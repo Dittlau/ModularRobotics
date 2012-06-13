@@ -28,7 +28,7 @@ void move(char direction, char speed){
 		
 		// LEFT foot first?
 		dxl_write_word(LEFT_ANKLE, GOAL_POSITION_L, 800 );	// turn ankle for balance
-		dxl_write_word(LEFT_HIP, GOAL_POSITION_L, 1023 );	// move hip
+		dxl_write_word(LEFT_HIP_BEND, GOAL_POSITION_L, 1023 );	// move hip
 		dxl_write_word(LEFT_ANKLE, GOAL_POSITION_L, 500 );	// turn ankle back
 		
 		
