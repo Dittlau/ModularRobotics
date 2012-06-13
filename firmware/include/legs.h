@@ -15,27 +15,32 @@
 #define PRESENT_SPEED_H		39
 #define MOVING				46
 
+// Defining the legs
+#define FRONT_LEFT	1
+#define FRONT_RIGHT 2
+#define BACK_LEFT	3
+#define BACK_RIGHT	4
 
 // Defining the joints
-#define RIGHT_HIP_ROTATE	10
-#define RIGHT_HIP_BEND		9
-#define RIGHT_KNEE			8
-#define RIGHT_ANKLE			7
-#define LEFT_HIP_ROTATE		6
-#define LEFT_HIP_BEND		5
-#define LEFT_KNEE			4
-#define LEFT_ANKLE			3
+#define FRONT_LEFT_ROTATE	1
+#define FRONT_LEFT_BEND		2
+#define FRONT_RIGHT_ROTATE	3
+#define FRONT_RIGHT_BEND	4
+#define BACK_LEFT_ROTATE	5
+#define BACK_LEFT_BEND		6
+#define BACK_RIGHT_ROTATE	7
+#define BACK_RIGHT_BEND		8
 
 
 // Defining various variables
-char FORWARD, BACK, LEFT, RIGHT;
+// char FORWARD, BACK, LEFT, RIGHT;
 
 
 // Default setting
 #define DEFAULT_BAUDNUM		1 // 1Mbps
 
 void legsInit(void);
-void move(char direction, char speed);
-void turn(char direction, char times);
+void move(char leg, char angle, char speed);
+// void turn(char direction, char times);
 
 #endif /* LEGS_H_ */
