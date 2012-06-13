@@ -11,6 +11,8 @@
 #include "serial.h"
 #include "zig.h"
 
+int receive = 0;
+
 int main(void)
 {
 	
@@ -21,7 +23,8 @@ int main(void)
 	
 	while(1)
 	{
-			printf("hello");
+		//receive = serial_read();
+		printf("receive");
 	}
 
 	return 0;

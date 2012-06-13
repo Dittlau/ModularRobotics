@@ -17,12 +17,14 @@
 
 
 // Defining the joints
-#define RIGHT_HIP	8
-#define RIGHT_KNEE	7
-#define RIGHT_ANKLE	6
-#define LEFT_HIP	5
-#define LEFT_KNEE	4
-#define LEFT_ANKLE	3
+#define RIGHT_HIP_ROTATE	10
+#define RIGHT_HIP_BEND		9
+#define RIGHT_KNEE			8
+#define RIGHT_ANKLE			7
+#define LEFT_HIP_ROTATE		6
+#define LEFT_HIP_BEND		5
+#define LEFT_KNEE			4
+#define LEFT_ANKLE			3
 
 
 // Defining various variables
