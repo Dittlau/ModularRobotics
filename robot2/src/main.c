@@ -56,20 +56,25 @@ int main(void)
 	
 	while(1)
 	{
-		forward(state,1);
-		//_delay_ms(1000);
+		forward(state,40,40);
 		state++;
-		if(state > 6) state = 1;
-		/*incoming = getchar();
-		if(incoming == 'w'){
-			printf("You entered w");
-		move(FRONT_LEFT,300,1,1);
-		//move(BACK_RIGHT,300,1,1);
+		if(state > 4) state = 1;
+		//incoming = getchar();
+		//printf("%d\n",incoming);
+		/*if(incoming == 'w'){
+			forward(state,40,40);
+			state++;	
+		}			
+		else if(incoming == 'q'){   //right forward
+			forward(state,20,40);
+			state++;
+		}else if(incoming == 'e'){   //left forward
+			forward(state,40,20);
+			state++;
 		}
+						
+		if(state > 4) state = 1;*/
 		
-		else if(incoming == 'z'){
-		printf("You entered z");	
-		//printf("%d\r\n", );*/
 	}
 
 	return 0;
