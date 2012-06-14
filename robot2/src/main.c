@@ -11,6 +11,7 @@
 #include <util/delay.h>
 #include "serial.h"
 #include "dynamixel.h"
+#include "legs.h"
 
 #define LINK_PLUGIN 0x80
 #define ENABLE_RXD_LINK_PC 0x20

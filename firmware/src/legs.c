@@ -23,6 +23,28 @@ void legsInit(void){
 	_delay_ms(1000);
 }
 
+int forward(int state,int direction){
+	switch(state){
+	case 1:
+		dxl_write_word(FRONT_LEFT_ROTATE, GOAL_POSITION_L, convert(45) );
+		dxl_write_word(FRONT_RIGHT_ROTATE, GOAL_POSITION_L, convert(45) );
+		/*
+		dxl_write_word(FRONT_LEFT_ROTATE, GOAL_POSITION_L, 400 );
+		dxl_write_word(FRONT_LEFT_BEND, GOAL_POSITION_L, 300 );
+		dxl_write_word(FRONT_LEFT_ROTATE, GOAL_POSITION_L, 400 );
+		dxl_write_word(FRONT_LEFT_BEND, GOAL_POSITION_L, 300 );
+		dxl_write_word(FRONT_LEFT_ROTATE, GOAL_POSITION_L, 400 );
+		dxl_write_word(FRONT_LEFT_BEND, GOAL_POSITION_L, 300 );
+		*/
+		break;
+	case 2:
+		convert(60);
+		break;
+
+	}
+	return 2;
+	}
+
 /**
  * Moves the robot forward
  * @param leg The leg to be moved, either front-left, front-right, back-left or back-right.
@@ -74,6 +96,14 @@ void move(int leg, int angle, int length, int speed){
 		dxl_write_word(BACK_RIGHT_ROTATE, GOAL_POSITION_L, 400 );
 		_delay_ms(1000);
 	}	
+}
+
+int convert(int degree){
+	if(degree < -60) degree = -60;
+	else if(degree > 60) degree = 60;
+	converted = (degree + 150)*1024/300;
+
+	return converted;
 }
 
 /**
