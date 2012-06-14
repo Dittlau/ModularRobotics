@@ -40,6 +40,8 @@
 #define DEFAULT_BAUDNUM		1 // 1Mbps
 
 void legsInit(void);
+int forward(int state,int direction);
+int convert(int degree);
 void move(int leg, int angle, int length, int speed);
 // void turn(char direction, char times);
 
