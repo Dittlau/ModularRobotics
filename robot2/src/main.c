@@ -11,6 +11,7 @@
 #include <util/delay.h>
 #include "serial.h"
 #include "dynamixel.h"
+#include "legs.h"
 
 #define LINK_PLUGIN 0x80
 #define ENABLE_RXD_LINK_PC 0x20
@@ -45,20 +46,21 @@ int main(void)
 	serial_set_zigbee();
 	//dxl_initialize( 0, 1 );
 	sei();
-	
+	legsInit();
+	unsigned char incoming;
 	
 	
 	while(1)
 	{
-		unsigned char incoming = getchar();
+		incoming = getchar();
 		if(incoming == 'w'){
 			printf("You entered w");
-		dxl_write_word( 8, 30, 1023 );	
+		move(FRONT_LEFT,300,1,1);
+		//move(BACK_RIGHT,300,1,1);
 		}
 		
-		else{
-		printf("You entered z");
-		dxl_write_word( 8, 30, 10);		
+		else if(incoming == 'z'){
+		printf("You entered z");	
 		//printf("%d\r\n", );
 	}
 
