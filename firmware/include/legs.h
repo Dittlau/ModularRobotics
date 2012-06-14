@@ -22,14 +22,14 @@
 #define BACK_RIGHT	4
 
 // Defining the joints
-#define FRONT_LEFT_ROTATE	1
-#define FRONT_LEFT_BEND		2
+#define FRONT_LEFT_ROTATE	7
+#define FRONT_LEFT_BEND		4
 #define FRONT_RIGHT_ROTATE	3
-#define FRONT_RIGHT_BEND	4
+#define FRONT_RIGHT_BEND	9
 #define BACK_LEFT_ROTATE	5
-#define BACK_LEFT_BEND		6
-#define BACK_RIGHT_ROTATE	7
-#define BACK_RIGHT_BEND		8
+#define BACK_LEFT_BEND		8
+#define BACK_RIGHT_ROTATE	10
+#define BACK_RIGHT_BEND		6
 
 
 // Defining various variables
@@ -40,7 +40,7 @@
 #define DEFAULT_BAUDNUM		1 // 1Mbps
 
 void legsInit(void);
-void move(char leg, char angle, char speed);
+void move(int leg, int angle, int length, int speed);
 // void turn(char direction, char times);
 
 #endif /* LEGS_H_ */

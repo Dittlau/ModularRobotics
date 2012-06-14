@@ -10,8 +10,8 @@
 #include <util/delay.h>
 #include "serial.h"
 #include "zig.h"
+#include "legs.h"
 
-int receive = 0;
 
 int main(void)
 {
@@ -20,11 +20,13 @@ int main(void)
 	zigbee_initialize();
 	sei();
 	
+	legsInit();
+	
 	
 	while(1)
 	{
-		//receive = serial_read();
-		printf("receive");
+		move(FRONT_LEFT,300,1,1);
+		move(BACK_RIGHT,300,1,1);
 	}
 
 	return 0;
