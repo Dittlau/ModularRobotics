@@ -10,7 +10,7 @@
 void legsInit(void){
 	dxl_initialize( 0, DEFAULT_BAUDNUM ); // Not using device index
 	
-	// Define maximum angles for joints (is it needed)
+	// Define maximum angles for joints (is it needed???)
 		
 	//dxl_write_word(3, P_CCW_ANGLE_L, 0 );
 	//dxl_write_word(3, P_CCW_ANGLE_H, 0 );
@@ -20,25 +20,29 @@ void legsInit(void){
 
 /**
  * Moves the robot forward
+ * @param leg The leg to be moved, either front-left, front-right, back-left or back-right.
  * @param direction Direction of movement, either forward or back.
+ * @param length The length of movement.
  * @param speed The speed of movement.
  */
-void move(char direction, char speed){
-	if (direction==FORWARD){
+void move(char leg, char angle, char length, char speed){
+	if (leg==FRONT_LEFT){
 		
-		// LEFT foot first?
-		dxl_write_word(LEFT_ANKLE, GOAL_POSITION_L, 800 );	// turn ankle for balance
-		dxl_write_word(LEFT_HIP_BEND, GOAL_POSITION_L, 1023 );	// move hip
-		dxl_write_word(LEFT_ANKLE, GOAL_POSITION_L, 500 );	// turn ankle back
-		
-		
+		dxl_write_word(FRONT_LEFT_BEND, GOAL_POSITION_L, 800 );	// turn ankle for balance
+		dxl_write_word(FRONT_LEFT_ROTATE, GOAL_POSITION_L, 1023 );	// move hip
+		dxl_write_word(FRONT_LEFT_BEND, GOAL_POSITION_L, 500 );	// turn ankle back
 		
 		
 	}
-	else if (direction==BACK){
+	else if (leg==FRONT_RIGHT){
 		
 	}
+	else if (leg==BACK_LEFT){
 	
+	}	
+	else if (leg==BACK_RIGHT){
+		
+	}	
 }
 
 /**
@@ -46,7 +50,7 @@ void move(char direction, char speed){
  * @param direction Direction of turn, either left or right.
  * @param times The number of 45 degree turns made.
  */
-void turn(char direction, char times){
+//void turn(char direction, char times){
 	
 	
-}
+//}
