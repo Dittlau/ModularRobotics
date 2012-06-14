@@ -40,7 +40,7 @@ void serial_set_wire() {
 
 int main(void)
 {
-
+	int state = 1;
 	
 	serial_initialize(57600);
 	serial_set_zigbee();
@@ -48,11 +48,19 @@ int main(void)
 	sei();
 	legsInit();
 	unsigned char incoming;
+
+	//dxl_write_word(8,GOAL_POSITION_L,convert(10))
+	
+	printf("%d\n",convert(45));
 	
 	
 	while(1)
 	{
-		incoming = getchar();
+		forward(state,1);
+		//_delay_ms(1000);
+		state++;
+		if(state > 6) state = 1;
+		/*incoming = getchar();
 		if(incoming == 'w'){
 			printf("You entered w");
 		move(FRONT_LEFT,300,1,1);
@@ -61,12 +69,12 @@ int main(void)
 		
 		else if(incoming == 'z'){
 		printf("You entered z");	
-		//printf("%d\r\n", );
+		//printf("%d\r\n", );*/
 	}
 
 	return 0;
 }
-}
+
 
 /*
 // ZIGBEE STUFF
