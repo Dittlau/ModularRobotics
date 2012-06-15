@@ -7,5 +7,7 @@
 
 void wire_initialize();
 void zigbee_initialize();
+int increase(int angle);
+int decrease(int angle);
 
 #endif
