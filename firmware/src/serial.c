@@ -131,13 +131,16 @@ unsigned char serial_get_queue(void)
 		gbSerialBufferHead = 0;
 	else
 		gbSerialBufferHead++;
-		
 	return data;
 }
 
 SIGNAL(USART1_RX_vect)
 {
-	serial_put_queue( UDR1 );
+ serial_put_queue( UDR1 );//changed default
+ 
+ 
+ //incoming = UDR1;
+ printf("---\n");
 }
 
 

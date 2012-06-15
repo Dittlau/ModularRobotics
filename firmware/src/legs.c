@@ -177,7 +177,13 @@ unsigned int convert(int degree){
 	unsigned int converted;
 	if(degree < -60) degree = -60;
 	else if(degree > 60) degree = 60;
+<<<<<<< HEAD
+
 	converted = (unsigned int)((degree + 150)*3.4);
+
+=======
+	converted = (unsigned int)((degree + 150)*3.4);
+>>>>>>> 82ea2d861ca0ef924c8ee9cf3250ae37c8379806
 	return converted;
 }
 

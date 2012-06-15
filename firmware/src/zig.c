@@ -18,3 +18,15 @@ void wire_initialize() {
 	PORTD &= ~(ENABLE_RXD_LINK_ZIGBEE); //Deactivate ENABLE_RXD_LINK_ZIGBEE
 	PORTD |= LINK_PLUGIN | ENABLE_RXD_LINK_PC; //Activate ENABLE_RXD_LINK_PC
 }
+
+int increase(int angle){
+	angle += 10;
+	if(angle > 40) angle = 40;
+	return angle;
+}
+
+int decrease(int angle){
+	angle -= 10;
+	if(angle < 0) angle = 0;
+	return angle;
+}
