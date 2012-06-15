@@ -43,6 +43,8 @@
 
 void legsInit(void);
 int forward(int state,int left_angle, int right_angle);
+int getAngle(distance);
+int getSpeed(distance);
 unsigned int convert(int degree);
 void move(int leg, int angle, int length, int speed);
 // void turn(char direction, char times);
