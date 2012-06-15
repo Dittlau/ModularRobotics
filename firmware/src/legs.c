@@ -4,6 +4,7 @@
 #include "dxl_hal.h"
 #include "dynamixel.h"
 #include "legs.h"
+#include "adc.h"
 
 /**
  * Initialize the servos
@@ -26,7 +27,6 @@ void legsInit(void){
 }
 
 int forward(int state,int left_angle, int right_angle){
-	int done = 1;
 	switch(state){
 	case 1:
 		dxl_write_word(FRONT_LEFT_ROTATE, GOAL_POSITION_L, convert(left_angle));
@@ -40,7 +40,7 @@ int forward(int state,int left_angle, int right_angle){
 		dxl_write_word(BACK_RIGHT_BEND, GOAL_POSITION_L, convert(0));
 		
 		dxl_write_word(HEAD, GOAL_POSITION_L, convert(-45));
-		
+
 		break;
 		
 	case 2:
@@ -91,21 +91,32 @@ int forward(int state,int left_angle, int right_angle){
 		
 		
 		break;
-		
-		
-
-
 
 	}
-	/*printf("%d\n",done);
-	while(done != 0){
-		done = dxl_read_byte(FRONT_LEFT_ROTATE,46) +  dxl_read_byte(FRONT_LEFT_BEND,46);;
-		
-	}
-	printf("DONE     %d\n",done);*/
+
 	_delay_ms(200);
-	return 2;
-	}
+	//sprintf("%d\n",getSensorValue(6))
+	return DMSDistance(getSensorValue(6));
+}
+
+/**
+ * Calculates the angle that the legs should move if it depending on what the sidesensors see.
+ * @param state The state from which the distance was returned
+ * @param distance The distance read from the DMSSensor, should be between 0(10) and 80 cm
+ * @return The left angle to be put into the moving functions, the value will be in the interval [0;40]
+ */
+int getAngle(distance){
+		if(distance < 20) return 0;
+		else if(distance < 40) return 10;
+		else if(distance < 60) return 20;
+		else if(distance < 80) return 30;
+		else return 40;
+}
+
+int getSpeed(distance){
+		if(distance < 30) return 0;
+		else return 40;
+}
 
 /**
  * Moves the robot forward
@@ -164,12 +175,7 @@ unsigned int convert(int degree){
 	unsigned int converted;
 	if(degree < -60) degree = -60;
 	else if(degree > 60) degree = 60;
-<<<<<<< HEAD
-	int converted = (degree + 150)*1024/300;
-=======
 	converted = (unsigned int)((degree + 150)*3.4);
->>>>>>> 07fbae15d2f56dbbd551e0a06a0f9b74dc37fb86
-
 	return converted;
 }
 
