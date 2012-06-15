@@ -20,13 +20,14 @@ void legsInit(void){
 	sei();	// Interrupt Enable
 
 	// Set default position
-	dxl_write_word( BROADCAST_ID, 32, 600);
-	dxl_write_word( HEAD, 32, 400);
+	dxl_write_word( BROADCAST_ID, 32, 1023);
+	dxl_write_word( HEAD, 32, 511);
 	dxl_write_word( BROADCAST_ID, GOAL_POSITION_L, 512 );
 	_delay_ms(1000);
 }
 
 int forward(int state,int left_angle, int right_angle){
+	int head_angle = 60;
 	switch(state){
 	case 1:
 		dxl_write_word(FRONT_LEFT_ROTATE, GOAL_POSITION_L, convert(left_angle));
@@ -39,7 +40,7 @@ int forward(int state,int left_angle, int right_angle){
 		dxl_write_word(BACK_LEFT_BEND, GOAL_POSITION_L, convert(40));
 		dxl_write_word(BACK_RIGHT_BEND, GOAL_POSITION_L, convert(0));
 		
-		dxl_write_word(HEAD, GOAL_POSITION_L, convert(-45));
+		dxl_write_word(HEAD, GOAL_POSITION_L, convert(-head_angle));
 
 		break;
 		
@@ -71,7 +72,7 @@ int forward(int state,int left_angle, int right_angle){
 		dxl_write_word(BACK_LEFT_BEND, GOAL_POSITION_L, convert(0));
 		dxl_write_word(BACK_RIGHT_BEND, GOAL_POSITION_L, convert(-40));
 		
-		dxl_write_word(HEAD, GOAL_POSITION_L, convert(45));
+		dxl_write_word(HEAD, GOAL_POSITION_L, convert(head_angle));
 		
 		
 		break;
@@ -99,77 +100,78 @@ int forward(int state,int left_angle, int right_angle){
 	return DMSDistance(getSensorValue(6));
 }
 
+
+int turn(int state,int angle){
+	switch(state){
+		case 1:
+		dxl_write_word(FRONT_LEFT_ROTATE, GOAL_POSITION_L, convert(angle));
+		dxl_write_word(FRONT_RIGHT_ROTATE, GOAL_POSITION_L, convert(angle));
+		dxl_write_word(BACK_LEFT_ROTATE, GOAL_POSITION_L, convert(angle));
+		dxl_write_word(BACK_RIGHT_ROTATE, GOAL_POSITION_L, convert(angle));
+		_delay_ms(200);
+		dxl_write_word(FRONT_LEFT_BEND, GOAL_POSITION_L, convert(-40));
+		_delay_ms(200);
+		dxl_write_word(FRONT_LEFT_ROTATE, GOAL_POSITION_L, convert(-angle));
+		_delay_ms(200);
+		dxl_write_word(FRONT_LEFT_BEND, GOAL_POSITION_L, convert(0));
+		//_delay_ms(200);
+		
+		break;
+		
+		case 2:
+		dxl_write_word(FRONT_RIGHT_BEND, GOAL_POSITION_L, convert(40));
+		_delay_ms(200);
+		dxl_write_word(FRONT_RIGHT_ROTATE, GOAL_POSITION_L, convert(-angle));
+		_delay_ms(200);
+		dxl_write_word(FRONT_RIGHT_BEND, GOAL_POSITION_L, convert(0));
+		//_delay_ms(200);
+		
+		break;
+		
+		case 3:
+		dxl_write_word(BACK_LEFT_BEND, GOAL_POSITION_L, convert(40));
+		_delay_ms(200);
+		dxl_write_word(BACK_LEFT_ROTATE, GOAL_POSITION_L, convert(-angle));
+		_delay_ms(200);
+		dxl_write_word(BACK_LEFT_BEND, GOAL_POSITION_L, convert(0));
+		//_delay_ms(200);
+		
+		break;
+		
+		case 4:
+		dxl_write_word(BACK_RIGHT_BEND, GOAL_POSITION_L, convert(-40));
+		_delay_ms(200);
+		dxl_write_word(BACK_RIGHT_ROTATE, GOAL_POSITION_L, convert(-angle));
+		_delay_ms(200);
+		dxl_write_word(BACK_RIGHT_BEND, GOAL_POSITION_L, convert(0));
+		//_delay_ms(200);
+		
+		break;
+	}
+	_delay_ms(200);
+	return DMSDistance(getSensorValue(6));
+}
+
+
 /**
  * Calculates the angle that the legs should move if it depending on what the sidesensors see.
  * @param state The state from which the distance was returned
  * @param distance The distance read from the DMSSensor, should be between 0(10) and 80 cm
  * @return The left angle to be put into the moving functions, the value will be in the interval [0;40]
  */
-int getAngle(distance){
+int getAngle(int distance){
 		if(distance < 20) return 0;
-		else if(distance < 40) return 10;
-		else if(distance < 60) return 20;
-		else if(distance < 80) return 30;
+		else if(distance < 60) return 15;
+		else if(distance < 80) return 20;
+		else if(distance < 120) return 30;
 		else return 40;
 }
 
-int getSpeed(distance){
+int getSpeed(int distance){
 		if(distance < 30) return 0;
 		else return 40;
 }
 
-/**
- * Moves the robot forward
- * @param leg The leg to be moved, either front-left, front-right, back-left or back-right.
- * @param direction Direction of movement, either forward or back.
- * @param length The length of movement.
- * @param speed The speed of movement.
- */
-void move(int leg, int angle, int length, int speed){
-	if (leg==FRONT_LEFT){
-		
-		dxl_write_word(FRONT_LEFT_BEND, GOAL_POSITION_L, 300 );
-		_delay_ms(1000);
-		dxl_write_word(FRONT_LEFT_ROTATE, GOAL_POSITION_L, 400 );
-		_delay_ms(1000);
-		dxl_write_word(FRONT_LEFT_BEND, GOAL_POSITION_L, 512 );
-		_delay_ms(2000);
-		dxl_write_word(FRONT_LEFT_ROTATE, GOAL_POSITION_L, 700 );
-		_delay_ms(1000);
-		
-		
-	}
-	else if (leg==FRONT_RIGHT){
-		dxl_write_word(FRONT_RIGHT_BEND, GOAL_POSITION_L, 300 );
-		_delay_ms(1000);
-		dxl_write_word(FRONT_RIGHT_ROTATE, GOAL_POSITION_L, 400 );
-		_delay_ms(1000);
-		dxl_write_word(FRONT_RIGHT_BEND, GOAL_POSITION_L, 512 );
-		_delay_ms(2000);
-		dxl_write_word(FRONT_RIGHT_ROTATE, GOAL_POSITION_L, 700 );
-		_delay_ms(1000);
-	}
-	else if (leg==BACK_LEFT){
-		dxl_write_word(BACK_LEFT_BEND, GOAL_POSITION_L, 300 );
-		_delay_ms(1000);
-		dxl_write_word(BACK_LEFT_ROTATE, GOAL_POSITION_L, 400 );
-		_delay_ms(1000);
-		dxl_write_word(BACK_LEFT_BEND, GOAL_POSITION_L, 512 );
-		_delay_ms(2000);
-		dxl_write_word(BACK_LEFT_ROTATE, GOAL_POSITION_L, 700 );
-		_delay_ms(1000);
-	}	
-	else if (leg==BACK_RIGHT){
-		dxl_write_word(BACK_RIGHT_BEND, GOAL_POSITION_L, 300 );
-		_delay_ms(1000);
-		dxl_write_word(BACK_RIGHT_ROTATE, GOAL_POSITION_L, 700 );
-		_delay_ms(1000);
-		dxl_write_word(BACK_RIGHT_BEND, GOAL_POSITION_L, 512 );
-		_delay_ms(2000);
-		dxl_write_word(BACK_RIGHT_ROTATE, GOAL_POSITION_L, 400 );
-		_delay_ms(1000);
-	}	
-}
 
 unsigned int convert(int degree){
 	unsigned int converted;

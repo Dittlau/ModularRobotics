@@ -83,7 +83,7 @@ int DMSDistance(int sensor_value){
 	int dist;
 	if(sensor_value > 200) dist = (int)(-0.0345*sensor_value + 30);
 	else if(sensor_value > 120) dist = (int)(-0.25*sensor_value + 72);
-	else dist = 80;//(int)(-0.7347*sensor_value + 130.2);
+	else dist = (int)(-0.7347*sensor_value + 130); //80
 
 	return dist;
 }

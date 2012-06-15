@@ -12,7 +12,8 @@
 
 int main(){
 	int state = 1;
-	int distance;
+	int state_turn = 1;
+	int distance, angle;
 	int left_angle = 40;
 	int right_angle = 40;
 	serial_initialize(57600);
@@ -21,22 +22,33 @@ int main(){
 
 	while(1)
 	{
-
-
 		distance = forward(state,left_angle,right_angle);
-		if(state == 1) left_angle = getAngle(distance);
-		else if(state == 3) right_angle = getAngle(distance);
+		if(state == 1){
+			left_angle = getAngle(distance);
+			if(left_angle < right_angle) right_angle = 40;
+			else left_angle = 40;
+		}
+		else if(state == 3){
+			right_angle = getAngle(distance);
+			if(right_angle < left_angle) left_angle = 40;
+			else right_angle = 40;
+		}
+		// If it's close to a wall it will turn until the wall is no longer within 20 cm
 		else if((state == 2 || state == 4) && distance < 20){
-			left_angle = 0;//getSpeed(distance);
-			right_angle = 0;//getSpeed(distance);
+			if(left_angle > right_angle) angle = -40;
+			else angle = 40;
+			while(distance < 30){
+				distance = turn(state_turn,angle);
+				state_turn++;
+				if(state_turn > 4) state_turn = 1;
+			}
+			state_turn = 1;
 		}
 		state++;
 		if(state > 4) state = 1;
-		printf("%d   %d\n",left_angle,right_angle);
+		//printf("%d   %d\n",left_angle,right_angle);
 
 	}
-
-
 
 	return 0;
 }
