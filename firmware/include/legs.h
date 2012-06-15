@@ -30,6 +30,8 @@
 #define BACK_LEFT_BEND		8
 #define BACK_RIGHT_ROTATE	10
 #define BACK_RIGHT_BEND		6
+#define HEAD                1
+// HEAD
 
 
 // Defining various variables
@@ -40,8 +42,8 @@
 #define DEFAULT_BAUDNUM		1 // 1Mbps
 
 void legsInit(void);
-int forward(int state,int direction);
-int convert(int degree);
+int forward(int state,int left_angle, int right_angle);
+unsigned int convert(int degree);
 void move(int leg, int angle, int length, int speed);
 // void turn(char direction, char times);
 

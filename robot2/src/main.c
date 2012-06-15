@@ -40,32 +40,46 @@ void serial_set_wire() {
 
 int main(void)
 {
-
+	int state = 1;
 	
 	serial_initialize(57600);
 	serial_set_zigbee();
 	//dxl_initialize( 0, 1 );
 	sei();
+	legsInit();
+	unsigned char incoming;
+
+	//dxl_write_word(8,GOAL_POSITION_L,convert(10))
 	
+	printf("%d\n",convert(45));
 	
 	
 	while(1)
 	{
-		unsigned char incoming = getchar();
-		if(incoming == 'w'){
-			printf("You entered w");
-		dxl_write_word( 8, 30, 1023 );	
+		forward(state,40,40);
+		state++;
+		if(state > 4) state = 1;
+		//incoming = getchar();
+		//printf("%d\n",incoming);
+		/*if(incoming == 'w'){
+			forward(state,40,40);
+			state++;	
+		}			
+		else if(incoming == 'q'){   //right forward
+			forward(state,20,40);
+			state++;
+		}else if(incoming == 'e'){   //left forward
+			forward(state,40,20);
+			state++;
 		}
+						
+		if(state > 4) state = 1;*/
 		
-		else{
-		printf("You entered z");
-		dxl_write_word( 8, 30, 10);		
-		//printf("%d\r\n", );
 	}
 
 	return 0;
 }
-}
+
 
 /*
 // ZIGBEE STUFF
