@@ -101,7 +101,7 @@ void move(int leg, int angle, int length, int speed){
 int convert(int degree){
 	if(degree < -60) degree = -60;
 	else if(degree > 60) degree = 60;
-	converted = (degree + 150)*1024/300;
+	int converted = (degree + 150)*1024/300;
 
 	return converted;
 }
