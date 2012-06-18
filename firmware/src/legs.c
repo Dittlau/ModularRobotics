@@ -20,10 +20,10 @@ void legsInit(void){
 	sei();	// Interrupt Enable
 
 	// Set default position
-	dxl_write_word( BROADCAST_ID, 32, 1023);
-	dxl_write_word( HEAD, 32, 511);
-	dxl_write_word( BROADCAST_ID, GOAL_POSITION_L, 512 );
-	_delay_ms(1000);
+	dxl_write_word( BROADCAST_ID, 32, 1000);
+	//dxl_write_word( HEAD, 32, 511);
+	//dxl_write_word( BROADCAST_ID, GOAL_POSITION_L, 512 );
+	//_delay_ms(1000);
 }
 
 int forward(int state,int left_angle, int right_angle){
@@ -95,7 +95,7 @@ int forward(int state,int left_angle, int right_angle){
 
 	}
 
-	_delay_ms(200);
+	_delay_ms(160);
 	//sprintf("%d\n",getSensorValue(6))
 	return DMSDistance(getSensorValue(6));
 }
@@ -177,13 +177,8 @@ unsigned int convert(int degree){
 	unsigned int converted;
 	if(degree < -60) degree = -60;
 	else if(degree > 60) degree = 60;
-<<<<<<< HEAD
 
 	converted = (unsigned int)((degree + 150)*3.4);
-
-=======
-	converted = (unsigned int)((degree + 150)*3.4);
->>>>>>> 82ea2d861ca0ef924c8ee9cf3250ae37c8379806
 	return converted;
 }
 

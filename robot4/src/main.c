@@ -11,7 +11,7 @@
 
 
 int main(){
-	int state = 1;
+	int state = 2;
 	int state_turn = 1;
 	int distance, angle;
 	int left_angle = 40;
@@ -20,6 +20,8 @@ int main(){
 	ADCInit();
 	legsInit();
 
+	// Ready position
+	forward(1,left_angle,right_angle);
 	while(1)
 	{
 		distance = forward(state,left_angle,right_angle);
