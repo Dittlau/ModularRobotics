@@ -24,7 +24,7 @@ int main(){
 	forward(1,left_angle,right_angle);
 	while(1)
 	{
-		distance = forward(state,left_angle,right_angle);
+		distance = forward(state,-left_angle,right_angle);
 		if(state == 1){
 			left_angle = getAngle(distance);
 			if(left_angle < right_angle) right_angle = 40;
