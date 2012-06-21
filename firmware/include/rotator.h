@@ -10,6 +10,11 @@
 
 #define START !(PIND & (1 << 0))
 
+#define MOTOR1	8
+#define MOTOR2	4
+#define MOTOR3	9
+#define MOTOR4	6
+
 #define LED1_ON (PORTC &= ~(1 << 4))
 #define LED1_OFF (PORTC |= (1 << 4))
 #define LED2_ON (PORTC &= ~(1 << 5))

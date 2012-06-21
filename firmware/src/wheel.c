@@ -8,30 +8,27 @@
 #include "dynamixel.h"
 #include "wheel.h"
 
+/**
+ * Initializes the dynamixels to be able to control the wheels.
+ */
 void wheelInit(void){
 	dxl_initialize( 0, DEFAULT_BAUDNUM ); // Not using device index
 	sei();	// Interrupt Enable
 }
 
 
+/**
+ * Makes a dynamixel spin with a given speed. The dynamixel need to be in wheel-mode.
+ * @param id The id of the dynamixel
+ * @param speed The speed given as a percentage of maximum speed.
+ * Positive percentage will move the motor CCW and negative will move the motor CW.
+ */
 void wheel(int id, int speed){
-	//int bMoving, wPresentPos;
-	//int CommStatus;
-
-	// Check moving done
-	//bMoving = dxl_read_byte( id, P_MOVING );
-	//CommStatus = dxl_get_result();
-
-	//if( CommStatus == COMM_RXSUCCESS ){
-		//if( bMoving == 0 ){
-			// No angle limitations
-			dxl_write_word( id, P_CCW_ANGLE_L, 0 );
-			dxl_write_word( id, P_CCW_ANGLE_H, 0 );
-			// Setting speed
-			dxl_write_word( id, P_SPEED_L, convertSpeed(speed) );
-
-		//}
-	//}
+	// No angle limitations
+	dxl_write_word( id, P_CCW_ANGLE_L, 0 );
+	dxl_write_word( id, P_CCW_ANGLE_H, 0 );
+	// Setting speed
+	dxl_write_word( id, P_SPEED_L, convertSpeed(speed) );
 }
 
 /**

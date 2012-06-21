@@ -68,8 +68,13 @@ int IRDistance(int sensor_value){
 	return dist;
 }
 
+/**
+ * Converts the sensor value from the IR sensor into a number defining when to react.
+ * @param sensor_value The value from the IR sensor
+ * @return 2 if the sensor detected something close, 1 if the sensor detected something at all and 0 otherwise
+ */
 int IRValue(int sensor_value){
-	if(sensor_value > 25) return 2; // limit was 100 before
+	if(sensor_value > 25) return 2;
 	else if(sensor_value > 0) return 1;
 	else return 0;
 }
@@ -88,11 +93,7 @@ int DMSDistance(int sensor_value){
 	return dist;
 }
 
-int DMSValue(int sensor_value){
-	if(sensor_value > 200) return 0;
-	else if(sensor_value > 120) return 1;
-	else return 2;
-}
+
 /**
  * Determines if the touch-sensor is on or off
  * @param sensor_value The value from the touch-sensor
